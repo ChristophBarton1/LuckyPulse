@@ -12,6 +12,10 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
   ],
 
+  // Register components by filename only (no directory prefix), so the design-system
+  // kit is used as <LpButton> / <LpCard> rather than <UiLpButton>. Filenames are unique.
+  components: [{ path: '~/components', pathPrefix: false }],
+
   // Single SCSS entry: design tokens -> animations -> utilities.
   css: ['~/assets/scss/main.scss'],
 

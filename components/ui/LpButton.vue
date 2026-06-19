@@ -8,8 +8,12 @@
  *  - `cn()` to compose, no external UI lib
  *  - real semantic element + visible focus ring + correct ARIA
  *  - renders as <NuxtLink> when `to` is supplied, otherwise <button>
+ *
+ * NuxtLink is referenced via the `#components` import (not resolveComponent), which
+ * keeps a single root element so `class` fallthrough and attrs behave correctly.
  */
-import { computed, resolveComponent } from 'vue'
+import { computed } from 'vue'
+import { NuxtLink } from '#components'
 import { cn } from '~/utils/cn'
 
 type Variant = 'primary' | 'accent' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success'
@@ -85,7 +89,7 @@ const classes = computed(() =>
 
 <template>
   <component
-    :is="to ? resolveComponent('NuxtLink') : 'button'"
+    :is="to ? NuxtLink : 'button'"
     :to="to"
     :type="to ? undefined : type"
     :class="classes"
@@ -95,25 +99,9 @@ const classes = computed(() =>
     :aria-label="ariaLabel"
     @click="$emit('click', $event)"
   >
-    <Icon
-      v-if="loading"
-      name="lucide:loader-2"
-      class="animate-spin"
-      :size="ICON_SIZE[size]"
-      aria-hidden="true"
-    />
-    <Icon
-      v-else-if="icon"
-      :name="`lucide:${icon}`"
-      :size="ICON_SIZE[size]"
-      aria-hidden="true"
-    />
+    <Icon v-if="loading" name="lucide:loader-2" class="animate-spin" :size="ICON_SIZE[size]" aria-hidden="true" />
+    <Icon v-else-if="icon" :name="`lucide:${icon}`" :size="ICON_SIZE[size]" aria-hidden="true" />
     <span v-if="$slots.default"><slot /></span>
-    <Icon
-      v-if="iconRight && !loading"
-      :name="`lucide:${iconRight}`"
-      :size="ICON_SIZE[size]"
-      aria-hidden="true"
-    />
+    <Icon v-if="iconRight && !loading" :name="`lucide:${iconRight}`" :size="ICON_SIZE[size]" aria-hidden="true" />
   </component>
 </template>

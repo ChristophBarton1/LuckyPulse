@@ -2,21 +2,18 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import LpButton from '~/components/ui/LpButton.vue'
 
-const NuxtLinkStub = {
-  name: 'NuxtLink',
-  props: ['to'],
-  template: '<a :href="to"><slot /></a>',
-}
-
 function mountButton(props: Record<string, unknown> = {}, slot = 'Enter Room') {
   return mount(LpButton, {
     props,
     slots: { default: slot },
     global: {
-      // @nuxt/icon's global <Icon> is transformed into a direct NuxtIcon import,
-      // so it must be stubbed by component name, not the `Icon` tag.
-      stubs: { Icon: true, NuxtIcon: true },
-      components: { NuxtLink: NuxtLinkStub },
+      // <Icon> is transformed to a direct NuxtIcon import, so stub by component name.
+      // NuxtLink (imported from #components) renders as a plain <a> here.
+      stubs: {
+        Icon: true,
+        NuxtIcon: true,
+        NuxtLink: { props: ['to'], template: '<a :href="to"><slot /></a>' },
+      },
     },
   })
 }
