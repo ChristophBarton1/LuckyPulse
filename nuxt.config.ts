@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@vueuse/nuxt',
     '@nuxt/eslint',
+    '@pinia/nuxt',
   ],
 
   // Register components by filename only (no directory prefix), so the design-system
