@@ -24,6 +24,7 @@ export default <Partial<Config>>{
         'lp-green': 'var(--lp-green)',
         'lp-orange': 'var(--lp-orange)',
         'lp-red': 'var(--lp-red)',
+        'lp-red-strong': 'var(--lp-red-strong)',
         'lp-text': 'var(--lp-text)',
         'lp-text-muted': 'var(--lp-text-muted)',
         'lp-text-soft': 'var(--lp-text-soft)',
@@ -47,12 +48,14 @@ export default <Partial<Config>>{
       boxShadow: {
         'lp-card': 'var(--lp-shadow-card)',
         'glow-gold': 'var(--lp-glow-gold)',
+        'glow-red': 'var(--lp-glow-red)',
         'glow-purple': 'var(--lp-glow-purple)',
         'glow-cyan': 'var(--lp-glow-cyan)',
         'glow-accent': 'var(--lp-glow-accent)',
       },
       backgroundImage: {
         'lp-gold-gradient': 'linear-gradient(135deg, var(--lp-gold-strong), var(--lp-gold))',
+        'lp-red-gradient': 'linear-gradient(135deg, var(--lp-red-strong), var(--lp-red))',
         'lp-accent-gradient': 'linear-gradient(135deg, var(--lp-accent-strong), var(--lp-accent-2))',
         'lp-surface-gradient': 'linear-gradient(180deg, var(--lp-surface-2), var(--lp-surface))',
       },

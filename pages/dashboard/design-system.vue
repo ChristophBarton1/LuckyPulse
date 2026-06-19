@@ -48,7 +48,7 @@ const nav = [
   { id: 'feedback', label: 'Feedback' },
 ]
 
-const buttonVariants = ['primary', 'accent', 'secondary', 'outline', 'ghost', 'danger', 'success'] as const
+const buttonVariants = ['primary', 'gold', 'accent', 'secondary', 'outline', 'ghost', 'danger', 'success'] as const
 const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'orange', 'accent', 'outline'] as const
 </script>
 

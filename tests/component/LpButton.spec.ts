@@ -28,6 +28,12 @@ describe('LpButton', () => {
 
   it('applies the primary variant class by default', () => {
     const wrapper = mountButton()
+    // Primary is the red signature CTA; gold is reserved for points/reward buttons.
+    expect(wrapper.classes()).toContain('bg-lp-red-gradient')
+  })
+
+  it('exposes a gold variant for reward CTAs', () => {
+    const wrapper = mountButton({ variant: 'gold' })
     expect(wrapper.classes()).toContain('bg-lp-gold-gradient')
   })
 

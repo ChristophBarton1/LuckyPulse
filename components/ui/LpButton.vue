@@ -16,7 +16,15 @@ import { computed } from 'vue'
 import { NuxtLink } from '#components'
 import { cn } from '~/utils/cn'
 
-type Variant = 'primary' | 'accent' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success'
+type Variant =
+  | 'primary'
+  | 'gold'
+  | 'accent'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'danger'
+  | 'success'
 type Size = 'sm' | 'md' | 'lg'
 
 const props = withDefaults(
@@ -53,8 +61,9 @@ const props = withDefaults(
 defineEmits<{ click: [event: MouseEvent] }>()
 
 const VARIANTS: Record<Variant, string> = {
-  primary: 'bg-lp-gold-gradient text-lp-bg font-semibold shadow-glow-gold hover:brightness-105',
-  accent: 'bg-lp-accent-gradient text-lp-bg font-semibold shadow-glow-accent hover:brightness-105',
+  primary: 'bg-lp-red-gradient text-white font-semibold shadow-glow-red hover:brightness-110',
+  gold: 'bg-lp-gold-gradient text-lp-bg font-semibold shadow-glow-gold hover:brightness-105',
+  accent: 'bg-lp-accent-gradient text-white font-semibold shadow-glow-accent hover:brightness-110',
   secondary: 'bg-lp-surface-2 text-lp-text border border-lp-border hover:bg-lp-surface-3',
   outline:
     'border border-lp-border-strong text-lp-text hover:border-lp-accent hover:text-lp-accent',

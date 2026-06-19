@@ -45,7 +45,10 @@ const discBackground = computed(() => {
 
   const stops: string[] = []
   for (let i = 0; i < count; i++) {
-    const color = i % 2 === 0 ? 'var(--lp-purple)' : 'var(--lp-surface-3)'
+    const color =
+      i % 2 === 0
+        ? 'color-mix(in srgb, var(--lp-red) 30%, var(--lp-surface-2))'
+        : 'var(--lp-surface-3)'
     const from = (i * step.value).toFixed(3)
     const to = ((i + 1) * step.value).toFixed(3)
     stops.push(`${color} ${from}deg ${to}deg`)
@@ -66,7 +69,7 @@ const canSpin = computed(() => props.spinsLeft > 0)
 <template>
   <LpCard
     variant="elevated"
-    glow="purple"
+    glow="gold"
     class="flex flex-col items-center"
     aria-label="Daily Spin reward wheel preview"
   >
@@ -95,7 +98,7 @@ const canSpin = computed(() => props.spinsLeft > 0)
 
       <!-- Conic-gradient disc -->
       <div
-        class="absolute inset-0 rounded-full ring-4 ring-lp-surface-2 shadow-glow-purple"
+        class="absolute inset-0 rounded-full ring-4 ring-lp-surface-2 shadow-glow-gold"
         :style="{ background: discBackground }"
       >
         <!-- Segment labels, rotated to their slice and pushed to the rim -->
@@ -123,7 +126,7 @@ const canSpin = computed(() => props.spinsLeft > 0)
 
     <!-- Primary CTA -->
     <LpButton
-      variant="primary"
+      variant="gold"
       block
       icon="sparkles"
       :disabled="!canSpin"
