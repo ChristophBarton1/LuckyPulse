@@ -69,6 +69,7 @@ demonstrate senior-level frontend engineering across the full Nuxt ecosystem.
 | Backend (MVP) | Nitro server routes (REST) + GraphQL Yoga, mocked-but-architected adapters |
 | Realtime | Simulated WebSocket service (swappable for a real WS) |
 | Integrations | Twitch Helix (live streams), Watch Companion data adapters |
+| API client | Bruno collection (`/bruno`) for the REST + GraphQL endpoints |
 | Tooling | Vitest, Vue Test Utils, ESLint, Prettier, `@nuxt/fonts`, `@nuxt/icon` |
 
 ## Features
@@ -127,6 +128,7 @@ server/utils/        Twitch Helix helper (server-only)
 utils/realtime/      simulated WebSocket service
 types/               domain + realtime types
 tests/               unit + component
+bruno/               Bruno API collection (REST + GraphQL requests)
 ```
 
 ## Testing

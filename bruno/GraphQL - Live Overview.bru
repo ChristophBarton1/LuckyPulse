@@ -1,0 +1,41 @@
+meta {
+  name: GraphQL - Live Overview
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query LiveOverview {
+    liveOverview {
+      activeRooms
+      activeUsers
+      votesPerMin
+      pointsDistributed
+      performance {
+        apiResponseMs
+        wsLatencyMs
+        clientErrorRate
+        cacheHitRate
+        predictionResolutionFailures
+      }
+      topRooms {
+        id
+        title
+        category
+        participants
+        prizePool
+      }
+    }
+  }
+}
+
+docs {
+  Dashboard-level read served by the GraphQL Yoga endpoint. Browsable GraphiQL playground
+  is available at GET {{baseUrl}}/api/graphql.
+}

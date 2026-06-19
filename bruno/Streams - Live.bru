@@ -1,0 +1,22 @@
+meta {
+  name: Streams - Live
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/streams/live?category=moba&first=6
+  body: none
+  auth: none
+}
+
+params:query {
+  category: moba
+  first: 6
+}
+
+docs {
+  Discover embeddable LIVE streams for a category. With a Twitch dev app configured it
+  returns live channels from the Helix API (source: "twitch-live"); otherwise a curated
+  fallback. Try category = moba | tactical-shooter | battle-royale.
+}
