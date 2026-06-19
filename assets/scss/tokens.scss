@@ -1,0 +1,115 @@
+// LuckyPulse design tokens — single source of truth.
+// Tailwind theme (tailwind.config.ts) references these custom properties, so changing a
+// value here re-skins every component. `--lp-accent*` is overridden per sport/esport theme.
+
+:root {
+  // Surfaces
+  --lp-bg: #050711;
+  --lp-bg-soft: #090d1a;
+  --lp-surface: #101426;
+  --lp-surface-2: #171b31;
+  --lp-surface-3: #202541;
+  --lp-border: rgba(255, 255, 255, 0.08);
+  --lp-border-strong: rgba(255, 255, 255, 0.14);
+
+  // Brand colors
+  --lp-gold: #f6c768;
+  --lp-gold-strong: #ffb82e;
+  --lp-purple: #8b5cf6;
+  --lp-purple-strong: #a855f7;
+  --lp-cyan: #22d3ee;
+  --lp-blue: #3b82f6;
+  --lp-green: #34d399;
+  --lp-orange: #fb923c;
+  --lp-red: #fb5471;
+
+  // Text
+  --lp-text: #f8fafc;
+  --lp-text-muted: #94a3b8;
+  --lp-text-soft: #cbd5e1;
+
+  // Font stacks (mirror tailwind.config.ts fontFamily).
+  --lp-font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --lp-font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --lp-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  // Theme-reactive accents (default = gold + purple).
+  --lp-accent: var(--lp-gold);
+  --lp-accent-strong: var(--lp-gold-strong);
+  --lp-accent-2: var(--lp-purple);
+
+  // Radius scale
+  --lp-radius-sm: 8px;
+  --lp-radius-md: 12px;
+  --lp-radius-lg: 16px;
+  --lp-radius-xl: 22px;
+  --lp-radius-2xl: 28px;
+
+  // Elevation + glow
+  --lp-shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 34px rgba(0, 0, 0, 0.45);
+  --lp-glow-gold: 0 0 0 1px rgba(246, 199, 104, 0.22), 0 10px 32px rgba(246, 199, 104, 0.16);
+  --lp-glow-purple: 0 0 0 1px rgba(139, 92, 246, 0.28), 0 10px 32px rgba(139, 92, 246, 0.2);
+  --lp-glow-cyan: 0 0 0 1px rgba(34, 211, 238, 0.28), 0 10px 32px rgba(34, 211, 238, 0.18);
+  --lp-glow-accent: 0 0 0 1px color-mix(in srgb, var(--lp-accent) 30%, transparent),
+    0 10px 32px color-mix(in srgb, var(--lp-accent) 22%, transparent);
+
+  // Z-index ladder
+  --lp-z-dropdown: 1000;
+  --lp-z-sticky: 1020;
+  --lp-z-modal: 1050;
+  --lp-z-tooltip: 1080;
+  --lp-z-toast: 1090;
+}
+
+// Sport / esport themes — swap only the accent triplet.
+[data-theme='football'] {
+  --lp-accent: var(--lp-green);
+  --lp-accent-strong: #22c55e;
+  --lp-accent-2: var(--lp-gold);
+}
+[data-theme='f1'] {
+  --lp-accent: var(--lp-red);
+  --lp-accent-strong: #ef4444;
+  --lp-accent-2: var(--lp-cyan);
+}
+[data-theme='tennis'] {
+  --lp-accent: var(--lp-purple);
+  --lp-accent-strong: var(--lp-purple-strong);
+  --lp-accent-2: var(--lp-green);
+}
+[data-theme='basketball'] {
+  --lp-accent: var(--lp-orange);
+  --lp-accent-strong: #f97316;
+  --lp-accent-2: var(--lp-gold);
+}
+[data-theme='fight'] {
+  --lp-accent: var(--lp-red);
+  --lp-accent-strong: #ef4444;
+  --lp-accent-2: var(--lp-gold);
+}
+[data-theme='esports'] {
+  --lp-accent: var(--lp-purple);
+  --lp-accent-strong: var(--lp-purple-strong);
+  --lp-accent-2: var(--lp-cyan);
+}
+
+// Base element styling (loaded after Tailwind preflight).
+html,
+body,
+#__nuxt {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--lp-bg);
+  color: var(--lp-text);
+  font-family: var(--lp-font-body, 'Inter', ui-sans-serif, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// Selection + focus defaults
+::selection {
+  background: color-mix(in srgb, var(--lp-accent) 35%, transparent);
+  color: var(--lp-text);
+}

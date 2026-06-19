@@ -1,0 +1,71 @@
+// Shared keyframes + motion guards.
+// Heavy/looping animation is gated behind motion + viewport preferences for performance.
+
+@keyframes lp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes lp-live-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 84, 113, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(251, 84, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 84, 113, 0);
+  }
+}
+
+@keyframes lp-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes lp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lp-count-bump {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Respect reduced-motion: kill all animation/transition.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

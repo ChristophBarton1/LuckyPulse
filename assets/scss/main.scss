@@ -1,0 +1,5 @@
+// SCSS entry point (registered in nuxt.config.ts -> css).
+// Order matters: tokens define the variables the others consume.
+@use 'tokens';
+@use 'animations';
+@use 'utilities';

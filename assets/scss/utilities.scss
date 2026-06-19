@@ -1,0 +1,84 @@
+// Reusable utility classes that are awkward to express as Tailwind utilities.
+
+// Thin themed scrollbar (opt-in via .lp-scroll).
+.lp-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lp-surface-3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--lp-surface-3);
+    border-radius: 9999px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--lp-surface-3) 70%, var(--lp-text-muted));
+  }
+}
+
+// Skeleton shimmer sweep.
+.lp-shimmer {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.07),
+      transparent
+    );
+    animation: lp-shimmer 1.5s infinite;
+  }
+}
+
+// Gradient text (used for hero / metric emphasis).
+.lp-text-gold {
+  background: linear-gradient(135deg, var(--lp-gold-strong), var(--lp-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lp-text-accent {
+  background: linear-gradient(135deg, var(--lp-accent-strong), var(--lp-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Hairline top highlight common to premium cards.
+.lp-card-sheen {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12),
+      transparent
+    );
+  }
+}
+
+// Performance: drop expensive glows on small screens / coarse pointers.
+@media (max-width: 640px) {
+  .lp-glow-gold,
+  .lp-glow-purple,
+  .lp-glow-cyan,
+  .lp-glow-accent {
+    box-shadow: none !important;
+  }
+}
