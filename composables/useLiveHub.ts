@@ -86,11 +86,12 @@ export function useLiveHub() {
     { id: 'c5', author: 'FootyQueen', text: 'More goals incoming, I can feel it! 😎', timeLabel: '1m ago', votes: 650, badge: null },
   ]
 
+  // Neutral chips (blitz-style restraint); meaningful color is reserved for trend deltas.
   const liveStats: LiveStat[] = [
-    { key: 'users', label: 'Active Users', value: 24_361, icon: 'users', accent: 'green' },
-    { key: 'rooms', label: 'Live Rooms', value: 118, icon: 'radio', accent: 'purple' },
-    { key: 'votes', label: 'Votes / Min', value: 8_726, icon: 'activity', accent: 'cyan' },
-    { key: 'latency', label: 'WebSocket Latency', value: '42ms', icon: 'gauge', accent: 'accent' },
+    { key: 'users', label: 'Active Users', value: 24_361, icon: 'users', accent: 'neutral' },
+    { key: 'rooms', label: 'Live Rooms', value: 118, icon: 'radio', accent: 'neutral' },
+    { key: 'votes', label: 'Votes / Min', value: 8_726, icon: 'activity', accent: 'neutral' },
+    { key: 'latency', label: 'WebSocket Latency', value: '42ms', icon: 'gauge', accent: 'neutral' },
   ]
 
   const spinSegments: SpinSegment[] = [

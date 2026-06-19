@@ -123,7 +123,7 @@ export interface LiveStat {
   label: string
   value: string | number
   icon: string
-  accent: 'gold' | 'purple' | 'cyan' | 'green' | 'accent'
+  accent: 'neutral' | 'gold' | 'purple' | 'cyan' | 'green' | 'accent'
   trend?: number
   /** Render the value as a latency/ms style mono figure. */
   unit?: string

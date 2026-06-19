@@ -14,7 +14,7 @@ import { computed } from 'vue'
 import { cn } from '~/utils/cn'
 import { formatPoints, formatDelta } from '~/utils/format'
 
-type Accent = 'gold' | 'purple' | 'cyan' | 'green' | 'accent'
+type Accent = 'neutral' | 'gold' | 'purple' | 'cyan' | 'green' | 'accent'
 
 const props = withDefaults(
   defineProps<{
@@ -44,6 +44,7 @@ const props = withDefaults(
 
 /** Background + text color for the icon chip, per accent. */
 const CHIP: Record<Accent, string> = {
+  neutral: 'bg-lp-surface-3 text-lp-text-soft',
   gold: 'bg-lp-gold/15 text-lp-gold',
   purple: 'bg-lp-purple/15 text-lp-purple',
   cyan: 'bg-lp-cyan/15 text-lp-cyan',

@@ -91,7 +91,7 @@ const roomTo = computed(() => `/rooms/${props.event.id}`)
         >
           <!-- HOME -->
           <div class="flex flex-col items-center gap-3 text-center sm:flex-row sm:gap-4 sm:text-left">
-            <LpAvatar :name="event.home.name" size="lg" ring />
+            <TeamCrest :name="event.home.name" size="xl" />
             <div class="min-w-0">
               <h2 class="font-heading text-2xl font-bold text-lp-text sm:text-3xl">
                 {{ event.home.name }}
@@ -121,7 +121,7 @@ const roomTo = computed(() => `/rooms/${props.event.id}`)
           <div
             class="flex flex-col items-center gap-3 text-center sm:flex-row-reverse sm:gap-4 sm:text-right"
           >
-            <LpAvatar :name="event.away.name" size="lg" ring />
+            <TeamCrest :name="event.away.name" size="xl" />
             <div class="min-w-0">
               <h2 class="font-heading text-2xl font-bold text-lp-text sm:text-3xl">
                 {{ event.away.name }}
