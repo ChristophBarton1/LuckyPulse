@@ -148,6 +148,46 @@ export interface CurrentUser {
   dailyStreak: number
 }
 
+export type MarketStatus = 'open' | 'closing' | 'closed' | 'resolved'
+
+/** A single pick option within a prediction market. */
+export interface PredictionOption {
+  id: string
+  label: string
+  /** Community share of picks (0–100), for the sentiment bar. */
+  pct?: number
+}
+
+/** A prediction market: one question with mutually-exclusive options. */
+export interface PredictionMarket {
+  id: string
+  question: string
+  marketType: string
+  status: MarketStatus
+  options: PredictionOption[]
+  /** Countdown label until picks lock, e.g. "0:45". */
+  closesInLabel?: string
+  /** Reward multiplier on a correct pick. */
+  pointsMultiplier: number
+  riskLevel: 'low' | 'medium' | 'high'
+  /** Set once resolved. */
+  resultOptionId?: string | null
+}
+
+/** An embeddable live stream (official YouTube/Twitch only — never rehosted). */
+export interface StreamInfo {
+  provider: 'twitch' | 'youtube'
+  /** Twitch channel login (for provider 'twitch'). */
+  channel?: string
+  /** YouTube video id (for provider 'youtube'). */
+  videoId?: string
+  title?: string
+  streamer?: string
+  viewers?: number
+  thumbnail?: string
+  game?: string
+}
+
 /** Sidebar / top navigation item. */
 export interface NavItem {
   label: string

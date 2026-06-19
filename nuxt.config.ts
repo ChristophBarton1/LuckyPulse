@@ -45,8 +45,18 @@ export default defineNuxtConfig({
           content:
             'Automated realtime sports & esports prediction rooms. Virtual points only. No real-money betting.',
         },
-        { name: 'theme-color', content: '#050711' },
+        { name: 'theme-color', content: '#0a0b0f' },
       ],
+    },
+  },
+
+  // Server-only secrets (mapped from NUXT_* env vars). Never exposed to the client.
+  runtimeConfig: {
+    twitchClientId: '',
+    twitchClientSecret: '',
+    sportApiKey: '',
+    public: {
+      // Safe, client-visible config can go here later.
     },
   },
 
