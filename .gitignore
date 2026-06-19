@@ -1,0 +1,18 @@
+# dependencies
+node_modules
+# nuxt / nitro
+.nuxt
+.output
+.data
+dist
+# env & logs
+.env
+*.log
+# os / editor
+.DS_Store
+Thumbs.db
+# test / coverage
+coverage
+test-results
+playwright-report
+.playwright
