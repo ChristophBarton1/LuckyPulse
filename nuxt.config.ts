@@ -61,6 +61,11 @@ export default defineNuxtConfig({
     },
   },
 
+  // The Live Hub is the start page.
+  routeRules: {
+    '/': { redirect: '/live' },
+  },
+
   // Strict types everywhere; type-check runs via the `typecheck` script (kept out of dev for speed).
   typescript: { strict: true, typeCheck: false },
 })

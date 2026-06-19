@@ -32,6 +32,7 @@ const {
       <div class="flex min-w-0 flex-col gap-5 xl:gap-6">
         <LiveHubHero :event="heroEvent" />
         <ExploreCategories :categories="categories" />
+        <LiveStreamsSection />
         <div class="grid flex-1 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:gap-6">
           <TopPredictionRooms :rooms="predictionRooms" class="h-full" />
           <StartingSoonList :items="startingSoon" class="h-full" />
