@@ -51,6 +51,8 @@ demonstrate senior-level frontend engineering across the full Nuxt ecosystem.
   live score, win-probability, head-to-head stats and a match timeline, plus a deep-link to the
   official broadcaster. The `StreamEmbed` lazy-loads via `IntersectionObserver`: the featured player
   autoplays muted, the rest play on hover.
+- **REST + GraphQL.** Simple actions go through Nitro REST routes; richer dashboard reads go through
+  a **GraphQL Yoga** endpoint (`/api/graphql`) with a browsable GraphiQL playground.
 - **Performance-minded.** SSR public pages, lazy media, skeleton states, capped/virtualizable lists,
   `prefers-reduced-motion`, reduced glow on mobile, and a layout that scales and fills from laptop to
   ultrawide (verified at 1920 and 2560).
@@ -64,7 +66,7 @@ demonstrate senior-level frontend engineering across the full Nuxt ecosystem.
 | Framework | Nuxt 3, Vue 3 `<script setup>`, TypeScript (strict) |
 | State | Pinia (normalized realtime room store) |
 | Styling | Tailwind CSS v3 + SCSS design tokens |
-| Backend (MVP) | Nitro server routes (REST), mocked-but-architected adapters |
+| Backend (MVP) | Nitro server routes (REST) + GraphQL Yoga, mocked-but-architected adapters |
 | Realtime | Simulated WebSocket service (swappable for a real WS) |
 | Integrations | Twitch Helix (live streams), Watch Companion data adapters |
 | Tooling | Vitest, Vue Test Utils, ESLint, Prettier, `@nuxt/fonts`, `@nuxt/icon` |
@@ -120,7 +122,7 @@ assets/scss/        design tokens, animations, utilities
 components/          ui (Lp* kit) · layout · live · rooms · predictions · events · chat · dashboard
 composables/         useLiveHub, useRoom (mock data sources, adapter-shaped)
 stores/              room.ts (Pinia realtime store)
-server/api/          REST routes (e.g. /api/streams/live)
+server/api/          REST routes (/api/streams/live) + GraphQL Yoga (/api/graphql)
 server/utils/        Twitch Helix helper (server-only)
 utils/realtime/      simulated WebSocket service
 types/               domain + realtime types
@@ -139,7 +141,8 @@ store logic (seed, optimistic picks, reward-on-resolve, leaderboard batching/thr
 ## Status & roadmap
 
 **Built:** design system, Live Hub, prediction rooms (esports streams + sports companion across 4
-sports), realtime engine, legal stream strategy with live Twitch integration, 28 tests.
+sports), realtime engine, legal stream strategy with live Twitch integration, REST + GraphQL
+endpoints, 28 tests.
 
 **Mocked / next:** real sports data API behind the companion, sports/esports hub pages, performance &
 feature-flag dashboards, daily-spin/rewards, moderation tools, Playwright E2E, public deployment.
