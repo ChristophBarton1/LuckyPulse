@@ -21,3 +21,6 @@ playwright-report
 .playwright-mcp
 a-index-foundation.png
 ds-full.png
+
+# unrelated file present in folder, not part of LuckyPulse
+praxta-care-adhs-legasthenie-dyskalkulie.html
