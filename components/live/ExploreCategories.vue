@@ -12,7 +12,7 @@
  * Each tile links to the sport hub (`/sports/<category>`) or the esports hub
  * (`/esports`) when the category is esports.
  */
-import type { CategoryTile } from '~/types/domain'
+import type { CategoryTile, EventCategory } from '~/types/domain'
 
 withDefaults(
   defineProps<{
@@ -23,6 +23,15 @@ withDefaults(
     categories: () => [],
   },
 )
+
+/** Themed photo per category (local, license-clean; no logos/IP). */
+const CATEGORY_IMAGE: Partial<Record<EventCategory, string>> = {
+  football: '/images/cat-football.jpg',
+  f1: '/images/cat-f1.jpg',
+  esports: '/images/cat-esports.jpg',
+  tennis: '/images/cat-tennis.jpg',
+  fight: '/images/cat-fight.jpg',
+}
 
 /** Destination for a tile: dedicated esports hub, otherwise the sport hub. */
 function tileTo(cat: CategoryTile): string {
@@ -66,18 +75,27 @@ function tileTo(cat: CategoryTile): string {
           padding="sm"
           :to="tileTo(cat)"
           :aria-label="`${cat.label} — ${cat.roomCount} rooms`"
-          class="flex h-full flex-col gap-2.5"
+          class="group flex h-full flex-col gap-2.5"
         >
-          <!-- Media band: theme-accent gradient + large translucent icon -->
+          <!-- Media band: themed sport photo (dark-graded) + small accent icon chip;
+               falls back to the accent gradient when no photo exists for the category. -->
           <div
-            class="relative flex h-20 items-center justify-center overflow-hidden rounded-lp-md bg-lp-accent-gradient"
+            class="relative h-24 overflow-hidden rounded-lp-md bg-lp-accent-gradient"
           >
-            <Icon
-              :name="`lucide:${cat.icon}`"
-              :size="34"
-              class="text-lp-bg opacity-60"
-              aria-hidden="true"
-            />
+            <img
+              v-if="CATEGORY_IMAGE[cat.category]"
+              :src="CATEGORY_IMAGE[cat.category]"
+              alt=""
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-lp-bg/85 via-lp-bg/25 to-transparent" />
+            <div class="absolute inset-0 bg-lp-accent/10" />
+            <span
+              class="absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-lp-sm border border-lp-border bg-lp-bg/55 backdrop-blur-sm"
+            >
+              <Icon :name="`lucide:${cat.icon}`" :size="16" class="text-lp-accent" aria-hidden="true" />
+            </span>
           </div>
 
           <!-- Label -->

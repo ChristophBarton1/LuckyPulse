@@ -44,6 +44,17 @@ const roomTo = computed(() => `/rooms/${props.event.id}`)
       class="relative min-h-[320px] overflow-hidden !rounded-lp-2xl"
       :aria-label="`Live match: ${event.home.name} versus ${event.away.name}`"
     >
+      <!-- Stadium backdrop, dimmed + navy-graded so the matchup stays readable. -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <img
+          src="/images/hero-stadium.jpg"
+          alt=""
+          class="h-full w-full object-cover object-center opacity-[0.38]"
+        >
+        <div class="absolute inset-0 bg-gradient-to-b from-lp-bg/75 via-lp-bg/45 to-lp-bg/85" />
+        <div class="absolute inset-0 bg-gradient-to-r from-lp-bg/70 via-transparent to-lp-bg/30" />
+      </div>
+
       <!-- Faint radial accent glow behind the matchup. Decorative only. -->
       <div
         class="pointer-events-none absolute -top-24 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-lp-accent/15 blur-3xl"
