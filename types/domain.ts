@@ -148,6 +148,31 @@ export interface CurrentUser {
   dailyStreak: number
 }
 
+/** A timeline moment in a Watch Companion (real live data, no video). */
+export interface MatchEvent {
+  id: string
+  /** Clock label, e.g. "23'", "45+2'", "HT". */
+  minute: string
+  type: 'goal' | 'card' | 'sub' | 'chance' | 'kickoff' | 'info'
+  side?: 'home' | 'away'
+  text: string
+}
+
+/** A head-to-head stat row in the companion (e.g. possession, shots). */
+export interface CompanionStat {
+  label: string
+  home: string | number
+  away: string | number
+  /** When true, render home/away as proportional bars (e.g. possession %). */
+  bar?: boolean
+}
+
+/** Official rights-holder to deep-link out to (we never restream). */
+export interface Broadcaster {
+  name: string
+  url: string
+}
+
 export type MarketStatus = 'open' | 'closing' | 'closed' | 'resolved'
 
 /** A single pick option within a prediction market. */

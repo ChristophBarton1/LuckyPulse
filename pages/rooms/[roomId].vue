@@ -16,8 +16,10 @@ useHead({ title: `${room.event.home.name} vs ${room.event.away.name} — LuckyPu
 
 // Discover embeddable live streams for this room's category (real via Twitch Helix when
 // configured, curated fallback otherwise). SSR-fetched.
+// Only esports rooms embed live video; sports rooms use the Watch Companion instead.
 const { data: streamData } = await useFetch('/api/streams/live', {
   query: { category: room.streamCategory, first: 5 },
+  immediate: room.kind === 'esports',
   default: () => ({ source: 'fallback', category: room.streamCategory, streams: [] as StreamInfo[] }),
 })
 const streams = computed<StreamInfo[]>(() => streamData.value?.streams ?? [])
@@ -79,8 +81,16 @@ const ACTIVITY_TONE: Record<string, string> = {
     <div class="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_380px] xl:gap-6">
       <!-- Main: streams + predictions -->
       <div class="flex min-w-0 flex-col gap-5">
-        <!-- Stream wall -->
-        <section class="flex flex-col gap-3">
+        <!-- Sports: legal Watch Companion (real data, no restream). -->
+        <WatchCompanionPanel
+          v-if="room.kind === 'sports' && room.companion"
+          :event="room.event"
+          :companion="room.companion"
+          :broadcaster="room.broadcaster"
+        />
+
+        <!-- Esports: live Twitch/YouTube video. -->
+        <section v-else class="flex flex-col gap-3">
           <StreamEmbed v-if="featured" :stream="featured" featured />
           <LpEmptyState
             v-else
