@@ -9,8 +9,8 @@
  *  - per-tile `data-theme` wrapper re-skins `lp-accent*` to each sport/esport
  *  - NuxtLink referenced as a literal tag (not resolveComponent)
  *
- * Each tile links to the sport hub (`/sports/<category>`) or the esports hub
- * (`/esports`) when the category is esports.
+ * Each tile opens its live room: esports rooms embed real Twitch video, sport rooms use
+ * the legal Watch Companion (live data — no broadcast restream).
  */
 import type { CategoryTile, EventCategory } from '~/types/domain'
 
@@ -33,9 +33,21 @@ const CATEGORY_IMAGE: Partial<Record<EventCategory, string>> = {
   fight: '/images/cat-fight.jpg',
 }
 
-/** Destination for a tile: dedicated esports hub, otherwise the sport hub. */
+/** Representative live room per category (esports = Twitch video, sport = Watch Companion). */
+const ROOM_BY_CATEGORY: Partial<Record<EventCategory, string>> = {
+  football: 'r1',
+  f1: 'f1',
+  tennis: 'tennis',
+  fight: 'fight',
+  esports: 'r3',
+}
+
 function tileTo(cat: CategoryTile): string {
-  return cat.category === 'esports' ? '/esports' : `/sports/${cat.category}`
+  return `/rooms/${ROOM_BY_CATEGORY[cat.category] ?? 'r1'}`
+}
+
+function modeLabel(cat: CategoryTile): string {
+  return cat.category === 'esports' ? 'Live stream' : 'Watch Companion'
 }
 </script>
 
@@ -96,6 +108,21 @@ function tileTo(cat: CategoryTile): string {
             >
               <Icon :name="`lucide:${cat.icon}`" :size="16" class="text-lp-accent" aria-hidden="true" />
             </span>
+            <!-- Watch-live affordance on hover -->
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+            >
+              <span
+                class="inline-flex items-center gap-1.5 rounded-full bg-lp-bg/75 px-3 py-1.5 text-xs font-medium text-lp-text backdrop-blur-sm"
+              >
+                <Icon
+                  :name="cat.category === 'esports' ? 'lucide:play' : 'lucide:radio'"
+                  :size="14"
+                  aria-hidden="true"
+                />
+                Watch live
+              </span>
+            </div>
           </div>
 
           <!-- Label -->
@@ -114,8 +141,11 @@ function tileTo(cat: CategoryTile): string {
             </span>
             <span v-else aria-hidden="true" />
 
-            <span class="font-mono text-xs text-lp-text-muted">
-              {{ cat.roomCount }} Rooms
+            <span
+              class="font-mono text-[11px]"
+              :class="cat.category === 'esports' ? 'text-lp-accent' : 'text-lp-text-muted'"
+            >
+              {{ modeLabel(cat) }}
             </span>
           </div>
         </LpCard>
