@@ -46,7 +46,7 @@ const COLORS: Record<Status, string> = {
   live: 'bg-lp-red',
   online: 'bg-lp-green',
   success: 'bg-lp-green',
-  upcoming: 'bg-lp-gold',
+  upcoming: 'bg-lp-orange',
   resolving: 'bg-lp-cyan',
   offline: 'bg-lp-text-muted',
   error: 'bg-lp-red',

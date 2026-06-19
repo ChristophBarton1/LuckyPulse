@@ -48,8 +48,8 @@ const nav = [
   { id: 'feedback', label: 'Feedback' },
 ]
 
-const buttonVariants = ['primary', 'gold', 'accent', 'secondary', 'outline', 'ghost', 'danger', 'success'] as const
-const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'orange', 'accent', 'outline'] as const
+const buttonVariants = ['primary', 'accent', 'secondary', 'outline', 'ghost', 'danger', 'success'] as const
+const badgeVariants = ['neutral', 'purple', 'cyan', 'green', 'red', 'orange', 'accent', 'outline'] as const
 </script>
 
 <template>
@@ -62,7 +62,7 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-3">
             <span
-              class="flex h-9 w-9 items-center justify-center rounded-lp-md bg-lp-gold-gradient text-lp-bg"
+              class="flex h-9 w-9 items-center justify-center rounded-lp-md bg-lp-red-gradient text-white"
             >
               <Icon name="lucide:activity" :size="20" />
             </span>
@@ -122,15 +122,14 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
           <div>
             <p class="mb-2 font-mono text-xs uppercase tracking-wide text-lp-text-muted">Brand &amp; state</p>
             <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              <DsSwatch label="Gold" token="--lp-gold" light />
-              <DsSwatch label="Gold strong" token="--lp-gold-strong" light />
+              <DsSwatch label="Red (primary)" token="--lp-red" />
+              <DsSwatch label="Red strong" token="--lp-red-strong" />
               <DsSwatch label="Purple" token="--lp-purple" />
               <DsSwatch label="Cyan" token="--lp-cyan" light />
               <DsSwatch label="Blue" token="--lp-blue" />
               <DsSwatch label="Green" token="--lp-green" light />
               <DsSwatch label="Orange" token="--lp-orange" light />
-              <DsSwatch label="Red" token="--lp-red" />
-              <DsSwatch label="Accent (themed)" token="--lp-accent" light />
+              <DsSwatch label="Accent (themed)" token="--lp-accent" />
               <DsSwatch label="Accent 2 (themed)" token="--lp-accent-2" />
             </div>
           </div>
@@ -146,7 +145,7 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
             Body copy in Inter — clear, readable, premium. Predict the outcome and climb the leaderboard.
           </p>
           <p class="font-body text-sm text-lp-text-muted">Muted secondary text for hints and metadata.</p>
-          <p class="font-mono text-2xl font-semibold text-lp-text">250,000 <span class="text-lp-gold">VP</span></p>
+          <p class="font-mono text-2xl font-semibold text-lp-text">250,000 <span class="text-lp-red">VP</span></p>
           <p class="font-mono text-xs uppercase tracking-[0.3em] text-lp-accent">Live now</p>
         </div>
       </DsSection>
@@ -181,7 +180,7 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
           <div class="flex flex-wrap items-center gap-2">
             <LpBadge variant="red" uppercase pulse dot>Live</LpBadge>
             <LpBadge variant="cyan" uppercase dot>Starting soon</LpBadge>
-            <LpBadge variant="gold" icon="crown">Host</LpBadge>
+            <LpBadge variant="red" icon="crown">Host</LpBadge>
             <LpBadge variant="purple" icon="star">VIP</LpBadge>
             <LpBadge variant="neutral" icon="users">8.9K online</LpBadge>
           </div>
@@ -234,7 +233,7 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
           <LpMetricCard label="Active Users" :value="24568" icon="users" accent="cyan" :trend="12.5" trend-label="vs last hour" />
           <LpMetricCard label="Live Rooms" :value="158" icon="radio" accent="purple" :trend="8.1" />
           <LpMetricCard label="Votes / Min" :value="3620" icon="trending-up" accent="green" :trend="13.2" />
-          <LpMetricCard label="Points Distributed" value="1.2M" icon="coins" accent="gold" :trend="-2.4" trend-label="vs avg" />
+          <LpMetricCard label="Points Distributed" value="1.2M" icon="coins" accent="neutral" :trend="-2.4" trend-label="vs avg" />
         </div>
       </DsSection>
 
@@ -277,7 +276,7 @@ const badgeVariants = ['neutral', 'gold', 'purple', 'cyan', 'green', 'red', 'ora
           <div class="grid gap-4 rounded-lp-xl border border-lp-border bg-lp-surface p-6 sm:grid-cols-2">
             <div class="space-y-3">
               <LpProgress :value="72" variant="accent" label="Room participation" show-label />
-              <LpProgress :value="45" variant="gold" label="XP to next level" show-label />
+              <LpProgress :value="45" variant="accent" label="XP to next level" show-label />
               <LpProgress indeterminate variant="cyan" label="Resolving predictions…" />
             </div>
             <div class="space-y-3">

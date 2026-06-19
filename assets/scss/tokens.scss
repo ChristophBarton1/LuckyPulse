@@ -12,11 +12,12 @@
   --lp-border: rgba(255, 255, 255, 0.07);
   --lp-border-strong: rgba(255, 255, 255, 0.13);
 
-  // Signature: red is the primary accent; gold is reserved for virtual points / rewards.
+  // Signature: red is the only brand accent (blitz.gg-style). No gold anywhere.
   --lp-red: #f5003d;
   --lp-red-strong: #ff2e54;
-  --lp-gold: #f6c768;
-  --lp-gold-strong: #ffb82e;
+  // Legacy gold tokens repointed to red so any remaining `lp-gold` class renders red.
+  --lp-gold: var(--lp-red);
+  --lp-gold-strong: var(--lp-red-strong);
   // Secondary / state / tier colors.
   --lp-purple: #8b5cf6;
   --lp-purple-strong: #a855f7;
@@ -49,8 +50,8 @@
 
   // Elevation + glow
   --lp-shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 34px rgba(0, 0, 0, 0.45);
-  --lp-glow-gold: 0 0 0 1px rgba(246, 199, 104, 0.22), 0 10px 32px rgba(246, 199, 104, 0.16);
   --lp-glow-red: 0 0 0 1px rgba(245, 0, 61, 0.32), 0 10px 32px rgba(245, 0, 61, 0.26);
+  --lp-glow-gold: var(--lp-glow-red);
   --lp-glow-purple: 0 0 0 1px rgba(139, 92, 246, 0.28), 0 10px 32px rgba(139, 92, 246, 0.2);
   --lp-glow-cyan: 0 0 0 1px rgba(34, 211, 238, 0.28), 0 10px 32px rgba(34, 211, 238, 0.18);
   --lp-glow-accent: 0 0 0 1px color-mix(in srgb, var(--lp-accent) 30%, transparent),
