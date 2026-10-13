@@ -27,7 +27,7 @@ events, make picks with virtual points, watch official live streams (esports) or
 frontend engineering across the Nuxt ecosystem: a token-driven design system, a typed realtime state
 layer, SSR, and a server layer with REST and GraphQL.
 
-## 📸 Screenshots
+## Screenshots
 
 | Esports room with live Twitch stream | Sports room with Watch Companion |
 | --- | --- |
@@ -40,7 +40,7 @@ layer, SSR, and a server layer with REST and GraphQL.
 
 </details>
 
-## ✨ Features
+## Features
 
 - **Live Hub** (`/live`): featured live match hero, category tiles that open live rooms, top
   prediction rooms, starting-soon list, global leaderboard, live chat, daily-spin preview and realtime stats.
@@ -50,7 +50,7 @@ layer, SSR, and a server layer with REST and GraphQL.
 - **Categories**: Football, Formula 1, Tennis, Fight Sports, and a first-class Esports section.
 - **Design system** (`/dashboard/design-system`): the full component library with live theme switching.
 
-## 🛠️ Engineering highlights
+## Engineering highlights
 
 - **Token-driven design system.** A single SCSS token layer feeds the Tailwind theme, so the entire
   app re-skins from one source. A `data-theme` attribute swaps sport/esport accents without
@@ -74,7 +74,7 @@ layer, SSR, and a server layer with REST and GraphQL.
   from laptop to ultrawide.
 - **Typed and tested.** Strict TypeScript end-to-end and **28 unit/component tests** (Vitest + Vue Test Utils).
 
-## 🧱 Tech stack
+## Tech stack
 
 | Area | Choice |
 | --- | --- |
@@ -87,7 +87,7 @@ layer, SSR, and a server layer with REST and GraphQL.
 | API client | Bruno collection (`/bruno`) for the REST + GraphQL endpoints |
 | Tooling | Vitest, Vue Test Utils, ESLint, Prettier, `@nuxt/fonts`, `@nuxt/icon`, VueUse |
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -106,7 +106,7 @@ flowchart LR
 The simulated socket exposes the same `connect` / `disconnect` + `onEvent` / `onState` interface a real
 socket would, so it can be replaced with a real WebSocket server without touching the store.
 
-## 🚀 Getting started
+## Getting started
 
 **Prerequisites:** Node 20+ and npm.
 
@@ -140,7 +140,7 @@ Secrets are read server-side via `runtimeConfig` and never exposed to the client
 | `npm run lint` | ESLint (`lint:fix` to auto-fix) |
 | `npm run format` | Prettier |
 
-## 🧪 Testing
+## Testing
 
 ```bash
 npm run test
@@ -149,7 +149,7 @@ npm run test
 Covers the design-system component contracts (`LpButton`, `LpBadge`, `LpMetricCard`) and the realtime
 store logic (seeding, optimistic picks, reward-on-resolve, leaderboard batching/throttle, chat capping).
 
-## 📁 Project structure
+## Project structure
 
 ```
 assets/scss/        design tokens, animations, utilities
@@ -164,7 +164,7 @@ tests/              unit + component tests
 bruno/              Bruno API collection (REST + GraphQL requests)
 ```
 
-## 🗺️ Status & roadmap
+## Status & roadmap
 
 **Built:** design system, Live Hub, prediction rooms (esports streams + sports companion across four
 sports), realtime engine, legal stream strategy with live Twitch integration, REST + GraphQL
@@ -173,7 +173,7 @@ endpoints, 28 tests.
 **Mocked / next:** real sports data API behind the companion, sports/esports hub pages, performance and
 feature-flag dashboards, daily-spin rewards, moderation tools, Playwright E2E, public deployment.
 
-## ⚖️ Legal
+## Legal
 
 This is a fan-engagement and prediction product using **virtual points only**. It is not a betting or
 gambling platform: no real money, deposits, withdrawals, cash prizes, odds or stakes. Live video uses
